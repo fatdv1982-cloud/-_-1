@@ -1,4 +1,12 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./SnakeGame   # Замените на фактическое имя подкаталога
 
+    steps:
+    # ... остальные шаги ...
 name: Build Android APK
 
 on:
