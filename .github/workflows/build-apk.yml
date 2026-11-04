@@ -1,18 +1,9 @@
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./build-apk # Замените на фактическое имя подкаталога
-
-    steps:
-    # ... остальные шаги ...
 name: Build Android APK
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Позволяет запускать сборку вручную
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,31 +19,17 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-
-    # Новый шаг: установка Gradle и генерация wrapper
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
     - name: Generate Gradle Wrapper
       run: gradle wrapper
 
-    # Теперь gradlew существует, можно продолжать
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
-      
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradle
-
-    - name: Build Debug APK
-      run: gradle assembleDebug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
