@@ -3,7 +3,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./SnakeGame   # Замените на фактическое имя подкаталога
+        working-directory: ./build-apk # Замените на фактическое имя подкаталога
 
     steps:
     # ... остальные шаги ...
