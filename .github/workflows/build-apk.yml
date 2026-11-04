@@ -1,5 +1,15 @@
 name: Build Android APK
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ИМЯ_ПОДПАПКИ   # замени на реальное имя папки, например ./app
 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    # ... остальные шаги без изменений
 on:
   push:
     branches: [ main ]
